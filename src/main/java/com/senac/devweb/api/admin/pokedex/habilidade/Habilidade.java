@@ -1,7 +1,6 @@
 package com.senac.devweb.api.admin.pokedex.habilidade;
 
 import com.senac.devweb.api.admin.pokedex.pokemon.Pokemon;
-import com.senac.devweb.api.admin.pokedex.utils.TipoPokemon;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -33,8 +32,5 @@ public class Habilidade {
     @Column(name="descricao")
     private String descricao;
 
-    @Column(name="tipo")
-    @Enumerated(EnumType.STRING)
-    private TipoPokemon tipoPokemon;
 
 }

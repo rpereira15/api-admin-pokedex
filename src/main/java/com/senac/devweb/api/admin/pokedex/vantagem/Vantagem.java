@@ -33,5 +33,6 @@ public class Vantagem {
     @Column(name = "imune")
     private Boolean imune;
 
+    @Column(name = "tipo")
     private TipoPokemon tipoPokemon;
 }
