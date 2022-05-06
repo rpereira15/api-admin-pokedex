@@ -20,5 +20,8 @@ public class Pokemon {
     @Column(name="i_pokemon")
     private Integer id;
 
+    @Column(name="nome")
+    private String nome;
+
 
 }

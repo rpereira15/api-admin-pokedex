@@ -15,7 +15,6 @@
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>11</java.version>
-        <querydsl.version>4.1.4</querydsl.version>
     </properties>
     <dependencies>
         <dependency>
@@ -84,12 +83,12 @@
         <dependency>
             <groupId>com.querydsl</groupId>
             <artifactId>querydsl-jpa</artifactId>
-            <version>${querydsl.version}</version>
+            <version>4.2.1</version>
         </dependency>
         <dependency>
             <groupId>com.querydsl</groupId>
             <artifactId>querydsl-apt</artifactId>
-            <version>${querydsl.version}</version>
+            <version>4.2.1</version>
             <scope>provided</scope>
         </dependency>
 
@@ -134,7 +133,7 @@
                     <dependency>
                         <groupId>com.querydsl</groupId>
                         <artifactId>querydsl-apt</artifactId>
-                        <version>${querydsl.version}</version>
+                        <version>4.2.1</version>
                     </dependency>
                 </dependencies>
             </plugin>
