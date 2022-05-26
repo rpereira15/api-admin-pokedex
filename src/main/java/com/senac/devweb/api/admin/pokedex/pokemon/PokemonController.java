@@ -2,6 +2,7 @@ package com.senac.devweb.api.admin.pokedex.pokemon;
 
 import com.senac.devweb.api.admin.pokedex.admin.AdminSingleton;
 import com.senac.devweb.api.admin.pokedex.admin.AdminSingletonFake;
+import com.senac.devweb.api.admin.pokedex.utils.TipoPokemon;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +24,7 @@ public class PokemonController {
     @PostMapping()
     @RequestMapping("/")
     public ResponseEntity<Map<String, String>> createPokemon() {
+
         Map<String, String> response = new HashMap<>();
         response.put("mensagem", "Pokémon cadastrado com sucesso");
 
