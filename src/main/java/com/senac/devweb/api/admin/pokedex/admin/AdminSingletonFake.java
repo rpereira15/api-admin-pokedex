@@ -1,14 +1,15 @@
 package com.senac.devweb.api.admin.pokedex.admin;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Data
-@Component
-@NoArgsConstructor
+@Getter
+@Setter
 @AllArgsConstructor
+@NoArgsConstructor
+@Service
 public class AdminSingletonFake {
 
     private Long qtdeCadastrada = 0L;

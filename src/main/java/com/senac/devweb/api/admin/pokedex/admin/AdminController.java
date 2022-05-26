@@ -17,14 +17,15 @@ import java.util.Map;
 public class AdminController {
 
     private AdminSingleton adminSingleton;
-    private AdminSingletonFake adminSingletonFake;
 
     @GetMapping()
     @RequestMapping("/consultados")
     public ResponseEntity<Map<String, Object>> getQueryPokemon() {
         Map<String, Object> response = new HashMap<>();
         response.put("singleton", this.adminSingleton.getQtdeConsultada());
-        response.put("fake", this.adminSingletonFake.getQtdeConsultada());
+
+        AdminSingletonFake adminSingletonFake = new AdminSingletonFake();
+        response.put("fake", adminSingletonFake.getQtdeConsultada());
 
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
