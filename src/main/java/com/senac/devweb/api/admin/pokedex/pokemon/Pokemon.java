@@ -27,8 +27,7 @@ public class Pokemon {
     private String nome;
 
     @Column(name = "tipo_pokemon")
-    @NotNull(message="O tipo não pode ser nulo")
-    @NotEmpty(message="O tipo não pode ser vazio")
+    @Enumerated(EnumType.STRING)
     private TipoPokemon tipoPokemon;
 
     @Column(name = "forca_ataque")
@@ -39,8 +38,6 @@ public class Pokemon {
 
     @Column(name = "genero")
     @Enumerated(EnumType.STRING)
-    @NotNull(message="O gênero não pode ser nulo")
-    @NotEmpty(message="O gênero não pode ser vazio")
     private Genero genero;
 
     @Column(name = "desvantagens")
