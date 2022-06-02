@@ -2,6 +2,7 @@ package com.senac.devweb.api.admin.pokedex.pokemon;
 
 import com.senac.devweb.api.admin.pokedex.admin.AdminSingleton;
 import com.senac.devweb.api.admin.pokedex.admin.AdminSingletonFake;
+import com.senac.devweb.api.admin.pokedex.utils.Genero;
 import com.senac.devweb.api.admin.pokedex.utils.TipoPokemon;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+import javax.validation.executable.ValidateOnExecution;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,10 +27,26 @@ public class PokemonController {
     @PostMapping()
     @RequestMapping("/")
     public ResponseEntity<Map<String, String>> createPokemon() {
-
         Map<String, String> response = new HashMap<>();
-        response.put("mensagem", "Pokémon cadastrado com sucesso");
+        try {
 
+            Pokemon pokemon = Pokemon.builder()
+                    .nome("Nome")
+                    .genero(null)
+                    .tipoPokemon(TipoPokemon.AGUA)
+                    .desvantagens("Desvantagens")
+                    .vantagens("Vantagens")
+                    .forcaDefesa(0L)
+                    .forcaAtaque(10L)
+                    .build();
+
+
+        } catch (Exception exception) {
+            response.put("Erro", exception.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        }
+
+        response.put("mensagem", "Pokémon cadastrado com sucesso");
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 

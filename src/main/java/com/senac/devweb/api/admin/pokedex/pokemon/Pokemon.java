@@ -5,13 +5,15 @@ import com.senac.devweb.api.admin.pokedex.utils.TipoPokemon;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Getter
 @Setter
-@Builder(toBuilder = true)
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Table(name= "pokemon")
 public class Pokemon {
 
@@ -20,9 +22,13 @@ public class Pokemon {
     @Column(name="i_pokemon")
     private Integer id;
     @Column(name="nome")
+    @NotNull(message="O nome não pode ser nulo")
+    @NotEmpty(message="O nome não pode ser vazio")
     private String nome;
 
     @Column(name = "tipo_pokemon")
+    @NotNull(message="O tipo não pode ser nulo")
+    @NotEmpty(message="O tipo não pode ser vazio")
     private TipoPokemon tipoPokemon;
 
     @Column(name = "forca_ataque")
@@ -33,6 +39,8 @@ public class Pokemon {
 
     @Column(name = "genero")
     @Enumerated(EnumType.STRING)
+    @NotNull(message="O gênero não pode ser nulo")
+    @NotEmpty(message="O gênero não pode ser vazio")
     private Genero genero;
 
     @Column(name = "desvantagens")
@@ -40,82 +48,6 @@ public class Pokemon {
 
     @Column(name = "vantagens")
     private String vantagens;
-
-    public Pokemon(PokemonBuilder pokemonBuilder) {
-        this.id = pokemonBuilder.id;
-        this.nome = pokemonBuilder.nome;
-    }
-
-
-    public static class PokemonBuilder {
-        private Integer id;
-        private String nome;
-        private TipoPokemon tipoPokemon;
-        private Long forcaAtaque;
-        private Long forcaDefesa;
-        private Genero genero;
-        private String desvantagens;
-        private String vantagens;
-        public PokemonBuilder nome(String nome) {
-            this.nome = nome;
-            return this;
-        }
-
-        public PokemonBuilder tipoPokemon(TipoPokemon tipoPokemon) {
-            this.tipoPokemon = tipoPokemon;
-            return this;
-        }
-
-        public PokemonBuilder forcaAtaque(Long forcaAtaque) {
-            this.forcaAtaque = forcaAtaque;
-            return this;
-        }
-
-        public Pokemon build() {
-            Pokemon pokemon = new Pokemon(this);
-            validate(this);
-            return pokemon;
-        }
-
-        private void validate(PokemonBuilder validate) {
-
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
