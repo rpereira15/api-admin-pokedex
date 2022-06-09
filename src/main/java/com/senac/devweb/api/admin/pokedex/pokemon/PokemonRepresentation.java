@@ -20,6 +20,7 @@ public interface PokemonRepresentation {
         @NotEmpty(message="O nome não pode ser vazio")
         private String nome;
 
+        @NotNull(message="O nome não pode ser nulo")
         private TipoPokemon tipoPokemon;
 
         @NotNull(message="A força de ataque não pode ser nulo")

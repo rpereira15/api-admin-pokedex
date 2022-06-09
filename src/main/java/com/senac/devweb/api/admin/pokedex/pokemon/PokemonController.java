@@ -17,24 +17,15 @@ import java.util.Map;
 public class PokemonController {
 
     private AdminSingleton adminSingleton;
-    private PokemonRepository pokemonRepository;
+    private PokemonService pokemonService;
 
     @PostMapping()
     @RequestMapping("/")
     public ResponseEntity<Pokemon> createPokemon(
             @Valid @RequestBody PokemonRepresentation.CreateOrUpdate create) {
 
-        Pokemon novoPokemon = this.pokemonRepository.save(Pokemon.builder()
-                .nome(create.getNome())
-                .genero(create.getGenero())
-                .forcaAtaque(create.getForcaAtaque())
-                .forcaDefesa(create.getForcaDefesa())
-                .vantagens(create.getVantagens())
-                .desvantagens(create.getDesvantagens())
-                .tipoPokemon(create.getTipoPokemon())
-                .build());
-
-
+        Pokemon novoPokemon = this.pokemonService.createPokemon(create);
+        this.adminSingleton.setQtdeCadastrada(this.adminSingleton.getQtdeCadastrada() + 1);
         return ResponseEntity.status(HttpStatus.CREATED).body(novoPokemon);
     }
 
